@@ -1,1 +1,1 @@
-Learning aliases and variables
+Learning about aliases and variables
