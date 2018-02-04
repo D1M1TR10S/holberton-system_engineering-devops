@@ -2,7 +2,7 @@
 # This script is displaying "Holberton School" 10 times
 i=0
 END=10
-while [ $i -lt $END ]; do
+until [ $i -ge $END ]; do
 	echo 'Holberton School'
 	i=$((i+1))
 done
