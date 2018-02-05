@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script is displaying "Holberton School" 10 times
+# This script is displaying 12 hours and 59 minutes of a clock
 h=0
 LAST=12
 m=1
@@ -10,6 +10,6 @@ while [ "$h" -le $LAST ]; do
 		echo "$m"
 		m=$((m+1))
 	done
-	m=0
+	m=1
 	h=$((h+1))
 done
