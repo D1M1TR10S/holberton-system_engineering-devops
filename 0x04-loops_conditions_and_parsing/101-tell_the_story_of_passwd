@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script that prints specific columns of the content in file /etc/passwd
+while IFS=":" read USER PASSWD U_ID G_ID U_INFO HOME_DIR COM_SHELL
+do
+	echo "The user $USER is part of the $G_ID gang, lives in $HOME_DIR and rides $COM_SHELL. $U_ID's place is protected by the passcode $PASSWD, more info about the user here: $U_INFO"
+done < "/etc/passwd"
