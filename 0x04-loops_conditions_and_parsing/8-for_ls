@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Script that displays the name of file after "-" for all files in cd
-for file in *
+FILES="$(ls)"
+for file in $FILES
 do
-	echo "${file##*-}"
+	echo "$file" | cut -d'-' -f2
 done
