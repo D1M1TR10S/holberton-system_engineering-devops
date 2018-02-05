@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 # This script is displaying "Holberton School" 10 times
 h=0
-LAST=13
+LAST=12
 m=1
 END=60
-while [ "$h" -lt $LAST ] -a [ "$m" -lt $END]; do
-	echo "$m"
-	m=$((m+1))
+while [ "$h" -le $LAST ]; do
+	echo "Hour: $h"
+	while [ "$m" -lt $END ]; do
+		echo "$m"
+		m=$((m+1))
+	done
+	m=0
+	h=$((h+1))
 done
