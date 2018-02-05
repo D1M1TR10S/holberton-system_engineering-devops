@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script that displays the name of file after "-" for all files in cd
+for file in *
+do
+	echo "${file##*-}"
+done
