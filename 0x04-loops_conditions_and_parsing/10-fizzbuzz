@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Script that prints numbers 1-100 with Fizz and Buzz replacing multiples of 3 & 5
+i=1
+END=100
+while [ "$i" -le "$END" ]; do
+	if (( $i % 15 == 0 )); then
+		echo "FizzBuzz"
+	elif (( $i % 5 == 0 )); then
+		echo "Buzz"
+	elif (( $i % 3 == 0 )); then
+		echo "Fizz"
+	else
+		echo "$i"
+	fi
+	i=$((i+1))
+done
