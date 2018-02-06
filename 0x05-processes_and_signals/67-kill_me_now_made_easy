@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# A script that pkills that process created by 4-to_infinity_and_beyond
+pkill -f ./7-highlander

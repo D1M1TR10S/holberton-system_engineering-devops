@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# A script that prints "To infinity and beyond" indefinitely, w/ sleep 2 in each iteration
+trap "echo 'I am invincible!!!'" SIGTERM
+while :
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
