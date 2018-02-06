@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # A script that prints all current bash processes with info
+# shellcheck disable=SC2009
 ps -faux | grep [b]ash
