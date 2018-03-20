@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-ssh ubuntu@107.23.115.192
+# Creating a server session using an ssh key
+
+ssh -i ~/.ssh/holberton ubuntu@107.23.115.192
