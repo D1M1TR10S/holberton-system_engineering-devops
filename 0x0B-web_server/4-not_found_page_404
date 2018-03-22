@@ -7,5 +7,5 @@ sudo apt-get -y install nginx
 echo "Holberton School" > /usr/share/nginx/html/index.html
 sudo sed -i "37i\ $redir" $file
 echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
-sudo sed -i "s/#error_page/error_page/g" $file
+sudo sed -i "s/#error_page 404/error_page 404/g" $file
 sudo service nginx restart
