@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Downloads nginx on a remote server and redirects a page
 block="\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=kH6QJzmLYtw;\n\t}"
-site="/etc/nginx/sites-enabled/default"
+file="/etc/nginx/sites-enabled/default"
 sudo apt-get -y update
 sudo apt-get -y install nginx
 echo "Holberton School" > /usr/share/nginx/html/index.html
-sudo sed -i "37i\ $block" $site
+sudo sed -i "37i\ $block" $file
 sudo service nginx restart
