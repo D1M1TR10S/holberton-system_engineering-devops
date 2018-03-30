@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+sudo service start
+cp -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service restart
