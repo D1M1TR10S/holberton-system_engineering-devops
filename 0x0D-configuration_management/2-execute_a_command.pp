@@ -1,5 +1,5 @@
-# Killing a process using puppet
-exec { "killmenow":
-    command => "/usr/bin/pkill -f killmenow",
+# Killing a process named killmenow
+exec { 'killmenow':
+    command => 'pkill -f killmenow',
     provider => 'shell',
 }
