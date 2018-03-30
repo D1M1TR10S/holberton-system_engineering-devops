@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 # Installs nginx on server then sets up a redirect and a 404 error message
-redir="\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=kH6QJzmLYtw;\n\t}"
+redir="\tlocation /redirect_me {\n\t\treturn 301;\n\t}"
 file="/etc/nginx/sites-enabled/default"
 sudo apt-get -y update
 sudo apt-get -y install nginx
+sudo chmod 77 /usr/share/nginx/html/index.html
 echo "Holberton School" > /usr/share/nginx/html/index.html
-sudo sed -i "37i\ $redir" $file
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+sudo sed -i "38i\ $redir" $file
+sudo touch /usr/share/nginx/html/404.html
+sudo chmod 77 /usr/share/nginx/html/404.html
+echo -e "Ceci n'est pas une page" > sudo tee /usr/share/nginx/html/404.html
 sudo sed -i "s/#error_page 404/error_page 404/g" $file
 sudo service nginx restart
