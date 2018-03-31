@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Setting up a custom http header
+
+sed -i '29i	add_header X-Served-By "$host";' /etc/nginx/sites-enabled/default
+service nginx restart
