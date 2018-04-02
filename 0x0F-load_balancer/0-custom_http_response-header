@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-# Setting up a custom http header
-
-sudo sed -i '29i\ \tadd_header X-Served-By "$host";\n' /etc/nginx/sites-enabled/default
+# Configure web-02 server to be the same as web-01 with a custom http header
+text="add_header X-Served-By $HOSTNAME;\n"
+file="/etc/nginx/sites-enabled/default"
+sudo apt-get update
+sudo apt-get -y install nginx
+if grep -Fxq "$text" $file
+then
+        sudo sed -i "29i\ \t$text" "$file"
+fi
 sudo service nginx restart
