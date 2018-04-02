@@ -2,10 +2,21 @@
 # Configure web-02 server to be the same as web-01 with a custom http header
 text="add_header X-Served-By $HOSTNAME;\n"
 file="/etc/nginx/sites-enabled/default"
+redir="\tlocation /redirect_me {\n\t\treturn 301;\n\t}"
 sudo apt-get update
 sudo apt-get -y install nginx
-if grep -Fxq "$text" $file
+sudo service nginx start
+sudo chmod 77 /usr/share/nginx/html/index.html
+echo "Holberton School" > /usr/share/nginx/html/index.html
+if grep -Fxq "$redir" $file
 then
-        sudo sed -i "29i\ \t$text" "$file"
+        sudo sed -i "38i\ $redir" $file
+fi
+sudo touch /usr/share/nginx/html/404.html
+sudo chmod 77 /usr/share/nginx/html/404.html
+echo -e "Ceci n'est pas une page" > sudo tee /usr/share/nginx/html/404.html
+sudo sed -i "s/#error_page 404/error_page 404/g" $file
+if ! grep -Fxq "$text" $file ; then
+        sudo sed -i "29i\ \t$text" $file
 fi
 sudo service nginx restart
