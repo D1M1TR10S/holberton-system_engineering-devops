@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Installing and configuring a new load balancer
+# With HAProxy and a round-robin distribution algoritihm
+
+sudo apt-get -y update
+
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-1.7 -y
+sudo apt-get -y update
+sudo apt-get -y dist-upgrade
+sudo apt-get -y install haproxy
+
+echo ENABLED=1 | sudo tee /etc/default/haproxy
+sudo sed -i -e "$ a\\ listen appname 0.0.0.0:80" /etc/haproxy/haproxy.cfg
+sudo sed -i -e "$ a\ \tmode http \n\tbalance roundrobin" /etc/haproxy/haproxy.cfg
+sudo sed -i "$ a\ \tserver 222-web-01 107.23.115.192:80 check\n\tserver 222-web-02 34.228.158.73:80 check" /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
