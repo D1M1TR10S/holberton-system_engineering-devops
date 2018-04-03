@@ -13,7 +13,7 @@ sudo apt-get -y install haproxy=1.8\*
 echo ENABLED=1 | sudo tee /etc/default/haproxy
 sudo sed -i -e "$ a\listen 222-lb-01" /etc/haproxy/haproxy.cfg
 sudo sed -i "$ a\ \tbind 0.0.0.0:80" /etc/haproxy/haproxy.cfg
-sudo sed -i -e "$ a\ \tmode http\n\tstats enable\n\tstats uri /haproxy?stats\n\tbalance roundrobin\n\toption httpclose" /etc/haproxy/haproxy.cfg
+sudo sed -i -e "$ a\ \tmode http\n\tstats enable\n\tstats uri /haproxy?stats\n\tbalance roundrobin" /etc/haproxy/haproxy.cfg
 sudo sed -i -e "$ a\ \tserver 222-web-01 107.23.115.192:80 check\n\tserver 222-web-02 34.228.158.73:80 check" /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
