@@ -11,8 +11,8 @@ from sys import argv
 if __name__ == "__main__":
     if argv[1].isdigit():
         staff = requests.get(
-            'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1]))
-        employee = staff.json().get('name')
+            'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1])).json()
+        employee = staff.get('name')
         todo_list = requests.get(
             'https://jsonplaceholder.typicode.com/todos?userId={}'
             .format(argv[1])).json()
@@ -20,7 +20,7 @@ if __name__ == "__main__":
         fin = 0
         for dct in todo_list:
             if dct.get('completed') is True:
-                done.append(dct['title'])
+                done.append(dct.get('title'))
                 fin += 1
         print("Employee {} is done with tasks({}/{}):".format(employee, fin, len(todo_list)))
         for i in done:
