@@ -11,10 +11,9 @@ import csv
 
 if __name__ == "__main__":
     if argv[1].isdigit():
-        user = requests.get(
+        employee = requests.get(
             'https://jsonplaceholder.typicode.com/users/{}'
-            .format(argv[1])).json()
-        employee = user.get('name')
+            .format(argv[1])).json().get('name')
         todo_list = requests.get(
             'https://jsonplaceholder.typicode.com/todos?userId={}'
             .format(argv[1])).json()
@@ -24,7 +23,6 @@ if __name__ == "__main__":
             writer = csv.DictWriter(todos, fieldnames=fieldnames,
                                     delimiter=',', quoting=csv.QUOTE_ALL,
                                     extrasaction='ignore')
-            
             for dct in todo_list:
                 dct['username'] = employee
                 writer.writerow(dct)
