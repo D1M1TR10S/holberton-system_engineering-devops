@@ -10,15 +10,15 @@ if __name__ == "__main__":
     import json
     import requests
     from sys import argv
-    
+
     all_employees = requests.get(
-            'https://jsonplaceholder.typicode.com/users'
-            ).json()
+        'https://jsonplaceholder.typicode.com/users'
+        ).json()
     dictionary = {}
     for employee in all_employees:
         todo_list = requests.get(
-                'https://jsonplaceholder.typicode.com/todos?userId={}'
-                .format(employee['id'])).json()
+            'https://jsonplaceholder.typicode.com/todos?userId={}'
+            .format(employee['id'])).json()
 
         user_id = employee['id']
         lst = []
