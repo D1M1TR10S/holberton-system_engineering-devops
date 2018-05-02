@@ -11,7 +11,6 @@ if __name__ == "__main__":
     import requests
     from sys import argv
 
-
     if argv[1].isdigit():
         employee = requests.get(
             'https://jsonplaceholder.typicode.com/users/{}'
