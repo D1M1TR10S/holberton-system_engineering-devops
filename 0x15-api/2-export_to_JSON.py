@@ -6,6 +6,7 @@ RESTful API.
 Exports this data into a JSON file
 '''
 if __name__ == "__main__":
+    import collections
     import json
     import requests
     from sys import argv
@@ -14,21 +15,18 @@ if __name__ == "__main__":
     if argv[1].isdigit():
         employee = requests.get(
             'https://jsonplaceholder.typicode.com/users/{}'
-            .format(argv[1])).json().get('name')
+            .format(argv[1])).json().get('username')
         todo_list = requests.get(
             'https://jsonplaceholder.typicode.com/todos?userId={}'
             .format(argv[1])).json()
 
+        lst = []
+        user_id = argv[1]
+        dct = collections.OrderedDict()
+        for obj in todo_list:
+            dct["task"] = obj["title"]
+            dct["completed"] = obj["completed"]
+            dct["username"] = employee
+            lst.append(dct)
         with open('{}.json'.format(argv[1]), 'w') as todos:
-            dictus = {}
-            lst = []
-            info = {}
-            for item in range(len(todo_list)):
-                for do in todo_list:
-                    info["task"] = do["title"]
-                    info["completed"] = do["completed"]
-                    info["username"] = do["username"]
-                lst.append(info)
-                info = {}
-            dictus["{}".format(argv[1])] = lst
-            json.dump(dictus, outfile)
+            json.dump({user_id: lst}, todos)
