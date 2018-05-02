@@ -4,11 +4,11 @@ Returns information about a given
 employee's TODO list progress.
 Call the JSON placeholder REST api.
 '''
-import requests
-from sys import argv
-
-
 if __name__ == "__main__":
+    import requests
+    from sys import argv
+
+
     if argv[1].isdigit():
         staff = requests.get(
             'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1])).json()
