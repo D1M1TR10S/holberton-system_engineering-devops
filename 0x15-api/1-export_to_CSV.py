@@ -19,10 +19,11 @@ if __name__ == "__main__":
                 .format(argv[1])).json()
     
         with open('{}.csv'.format(argv[1]), 'w') as todos:
-        fieldnames = ["userId", "username", "completed", "title"]
-        writer = csv.DictWriter(todos, fieldnames=fieldnames,
+            fieldnames = ["userId", "username", "completed", "title"]
+            writer = csv.DictWriter(todos,
+                fieldnames=fieldnames,
                 delimiter=',', quoting=csv.QUOTE_ALL,
                 extrasaction='ignore')
-        for dct in todo_list:
-        dct['username'] = employee
-    writer.writerow(dct)
+            for dct in todo_list:
+                dct['username'] = employee
+                writer.writerow(dct)

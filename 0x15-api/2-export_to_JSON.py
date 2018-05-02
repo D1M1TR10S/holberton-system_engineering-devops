@@ -5,12 +5,12 @@ employee's To-do list progress through
 RESTful API.
 Exports this data into a JSON file
 '''
-import requests
-from sys import argv
-import json
-
-
 if __name__ == "__main__":
+    import json
+    import requests
+    from sys import argv
+
+
     if argv[1].isdigit():
         employee = requests.get(
             'https://jsonplaceholder.typicode.com/users/{}'
