@@ -8,9 +8,7 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    headers = {
-    'User-Agent': 'The Lord of Cats'
-}
+    headers = {'User-Agent': 'CatLord'}
     subred = requests.get(
         'https://api.reddit.com/r/{}/about'.format(subreddit), headers=headers)
     dct = subred.json()
